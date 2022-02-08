@@ -1,6 +1,6 @@
-const ImageGalleryItem = () => (
+const ImageGalleryItem = ({id, imgURL, largeImg }) => (
   <li className="ImageGalleryItem">
-    <img src="" alt="" className="ImageGalleryItem-image"/>
+    <img src={imgURL} key={id} value={largeImg} alt="" className="ImageGalleryItem-image"/>
   </li>
 );
 

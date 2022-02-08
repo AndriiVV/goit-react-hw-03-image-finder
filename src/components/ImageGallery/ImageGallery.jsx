@@ -1,9 +1,15 @@
 import ImageGalleryItem from "components/ImageGalleryItem/ImageGalleryItem";
 
 
-const ImageGallery = () => (
+const ImageGallery = ({gallery}) => (
   <ul className="ImageGallery">
-    <ImageGalleryItem />
+    {gallery.map(({id, webformatURL, largeImageURL}) => (
+      <ImageGalleryItem id={id} imgURL={webformatURL} largeImg={ largeImageURL}/>
+
+    ))
+     
+    }
+        
   </ul>
 );
 
