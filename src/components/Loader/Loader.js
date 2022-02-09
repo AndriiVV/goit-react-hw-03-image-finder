@@ -24,7 +24,16 @@ export const Loader = (q, page = 1) => {
   setParams({ q, page });
   return axios
     .get('api/')
-    .then(res => res.data.hits)
+    .then(res => {
+      // console.log('totalHits: ', res.data.totalHits);
+      if (!res.data.hits.length) {
+        throw new Error('No more data!');
+      }
+      return {
+        gallery: res.data.hits,
+        totalPages: Math.ceil(res.data.totalHits / 12),
+      };
+    })
     .catch(err => {
       throw err;
     });

@@ -11,8 +11,11 @@ class Searchbar extends Component {
   }
 
   handleSubmit = (e) => { 
+    const { input } = this.state;
     e.preventDefault();
-    this.props.onSubmit(this.state.input);
+    if (!input || input === this.props.lastSearch) return;
+    // console.log("handleSubmit: ", input);
+    this.props.onSubmit(input);
   }
 
   render() { 
